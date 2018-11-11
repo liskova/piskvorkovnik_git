@@ -1,2 +1,2 @@
-# pisvorkovnik_git
-obsahuje moje resení projektu 1d pyskorky z PyLadies
+# piskvorkovnik_git
+obsahuje moje reseni projektu 1d piskvorky z PyLadies
