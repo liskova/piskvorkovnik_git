@@ -49,11 +49,11 @@ def vyhodnot(herni_retezec):
         vyhodnoceni_stavu = "-"
     return vyhodnoceni_stavu
 
-def piskvorky1d():
+def piskvorky1d(symbol_za_ktery_hraje_pocitac):
     aktualni_pole = 20*"-"
     for deset_tahu_staci in range(10):
         print("01234567890123456789")
-        aktualni_pole = tah_pocitace(aktualni_pole)
+        aktualni_pole = tah_pocitace(aktualni_pole, symbol_za_ktery_hraje_pocitac)
         print(aktualni_pole)
         print(vyhodnot(aktualni_pole))
         if vyhodnot(aktualni_pole) in ["x","o", "!"]:
