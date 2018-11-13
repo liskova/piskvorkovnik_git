@@ -1,7 +1,7 @@
 from ai import tah_pocitace
 from util import tah
 
-def tah_hrace(pole):
+def tah_hrace(pole, symbol_hrace):
     """
     dostane řetězec s herním polem, zeptá se hráče,
     na kterou pozici chce hrát, a vrátí herní pole se
@@ -10,7 +10,6 @@ def tah_hrace(pole):
     políčka. Pokud uživatel zadá špatný vstup, funkce mu
     vynadá a zeptá se znova.
     """
-    symbol_hrace = "o"
 
     zeptej_se_znova = 1
     while zeptej_se_znova == 1:
@@ -30,36 +29,36 @@ def tah_hrace(pole):
 
     return tah(pole, cislo_policka, symbol_hrace)
 
-def vyhodnot(herni_retezec):
+def vyhodnot(herni_retezec, symbol_pocitace, symbol_hrace):
     """
     dostane řetězec s herním polem 1-D piškvorek a vrátí jednoznakový řetězec podle stavu hry:
-    "x" – Vyhrál hráč s křížky (pole obsahuje "xxx")
+    "x" – Vyhrál hráč s křížky (pole obsahuje "xxx") - v aktuální verzi, nahrazeno symbolem_pocitace
     "o" – Vyhrál hráč s kolečky (pole obsahuje "ooo")
     "!" – Remíza (pole neobsahuje "-", a nikdo nevyhrál)
     "-" – Ani jedna ze situací výše (t.j. hra ještě neskončila)
     """
 
-    if "xxx" in herni_retezec:
-        vyhodnoceni_stavu = "x"
-    elif "ooo" in herni_retezec:
-        vyhodnoceni_stavu = "o"
+    if str(3*symbol_pocitace) in herni_retezec:
+        vyhodnoceni_stavu = str(symbol_pocitace)
+    elif str(3*symbol_hrace) in herni_retezec:
+        vyhodnoceni_stavu = str(symbol_hrace)
     elif "-" not in herni_retezec:
         vyhodnoceni_stavu = "!"
     else:
         vyhodnoceni_stavu = "-"
     return vyhodnoceni_stavu
 
-def piskvorky1d(symbol_za_ktery_hraje_pocitac):
+def piskvorky1d(symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac):
     aktualni_pole = 20*"-"
     for deset_tahu_staci in range(10):
         print("01234567890123456789")
-        aktualni_pole = tah_pocitace(aktualni_pole, symbol_za_ktery_hraje_pocitac)
+        aktualni_pole = tah_pocitace(aktualni_pole, symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac)
         print(aktualni_pole)
-        print(vyhodnot(aktualni_pole))
-        if vyhodnot(aktualni_pole) in ["x","o", "!"]:
+        print(vyhodnot(aktualni_pole, symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac))
+        if vyhodnot(aktualni_pole, symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac) in [symbol_za_ktery_hraje_pocitac,"o", "!"]:
             break
-        aktualni_pole = tah_hrace(aktualni_pole)
+        aktualni_pole = tah_hrace(aktualni_pole, symbol_za_ktery_hraje_hrac)
         print(aktualni_pole)
-        print(vyhodnot(aktualni_pole))
-        if vyhodnot(aktualni_pole) in ["x","o", "!"]:
+        print(vyhodnot(aktualni_pole, symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac))
+        if vyhodnot(aktualni_pole, symbol_za_ktery_hraje_pocitac, symbol_za_ktery_hraje_hrac) in [symbol_za_ktery_hraje_pocitac,"o", "!"]:
             break

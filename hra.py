@@ -1,3 +1,3 @@
 from piskvorky import piskvorky1d
 
-piskvorky1d("h")
+piskvorky1d("p","h")
