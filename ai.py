@@ -2,8 +2,13 @@ from random import randrange
 from util import tah
 
 
-def tah_pocitace(pole, symbol_pocitace, symbol_hrace):
+def tah_pocitace(pole, symbol_pocitace):
     "Vrátí herní pole se zaznamenaným tahem počítače"
+
+    if symbol_pocitace == "x":
+        symbol_hrace = "o"
+    else:
+        symbol_hrace = "x"
 
     zkus_hrat_znova = 1
     while zkus_hrat_znova == 1:
