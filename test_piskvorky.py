@@ -1,3 +1,4 @@
+import pytest
 from ai import tah_pocitace
 from util import tah
 from piskvorky import vyhodnot
@@ -27,6 +28,54 @@ def test_tah_pocitace_branit_hasit1():
     akce = tah_pocitace("oo--oxoxoxoxxoxoxxoo", "x")
     assert akce == "oox-oxoxoxoxxoxoxxoo"
 
+def test_tah_pocitace_dlouhy():
+
+    akce = tah_pocitace("-------------------------------", "o")
+    vysledek_akce = "o" in akce
+    assert vysledek_akce == True
+
+    akce = tah_pocitace("----------------------xx", "x")
+    assert akce == "---------------------xxx"
+
+    akce = tah_pocitace("oxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxxox-","o")
+    assert akce == "oxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxxoxo"
+
+def test_tah_pocitace_kratky():
+
+    akce = tah_pocitace("-","x")
+    assert akce == "x"
+
+def test_tah_pocitace_prazdny():
+    with pytest.raises(ValueError):
+        tah_pocitace("","o")
+
+def test_tah_pocitace_plny():
+    with pytest.raises(ValueError):
+        tah_pocitace("xoxooxoxoxoxoxoxoxoxoxoxoxoxo","x")
+
+def test_tah_pocitace_prasit_1():
+    akce = tah_pocitace("--------o--------x--","x")
+    assert akce == "--------ox-------x--"
+
+def test_tah_pocitace_budovat_1():
+    akce = tah_pocitace("x-----------x------x", "x")
+    assert akce == "x-----------xx-----x"
+
+def test_tah_pocitace_budovat_2():
+    akce = tah_pocitace("----","x")
+    assert akce == "-x--"
+
+def test_tah_pocitace_budovat_3():
+    akce = tah_pocitace("-","o")
+    assert akce == "o"
+
+def test_tah_pocitace_budovat_4():
+    akce = tah_pocitace("---","x")
+    assert akce == "-x-"
+
+def test_tah_pocitace_budovat_5():
+    akce = tah_pocitace("xo-","x")
+    assert akce == "xox"
 
 def test_tah_prvni():
     nove_pole = tah("--------------------", 0, "x")
