@@ -35,12 +35,18 @@ def tah_pocitace(pole, symbol_pocitace):
         cislo_policka = pole.index(str(2*symbol_hrace) + "-") +2
 
     #bránit - prasit 1
+    elif (("-" + str(symbol_hrace) + "-") in pole) and (("-" + str(symbol_hrace) + "-") not in pole):
+        cislo_policka = pole.index("-" + str(symbol_hrace) + "-")+2
+
+# budovat 1
+    elif ("-" + str(symbol_pocitace) + "-") in pole:
+        cislo_policka = pole.index("-" + str(symbol_pocitace) + "-")+2
+
+#branit - prasit 2
     elif ("-" + str(symbol_hrace) + "-") in pole:
         cislo_policka = pole.index("-" + str(symbol_hrace) + "-")+2
 
-    # budovat 1
-    elif ("-" + str(symbol_pocitace) + "-") in pole:
-        cislo_policka = pole.index("-" + str(symbol_pocitace) + "-")+2
+# budovat 2
     elif "-----" in pole:
         cislo_policka = pole.index("-----") + 3
     elif "---" in pole:

@@ -55,7 +55,11 @@ def test_tah_pocitace_plny():
 
 def test_tah_pocitace_prasit_1():
     akce = tah_pocitace("--------o--------x--","x")
-    assert akce == "--------ox-------x--"
+    assert akce == "--------o--------xx-"
+
+def test_tah_pocitace_prasit_2():
+    akce = tah_pocitace("--xo-----o----------","x")
+    assert akce == "--xo-----ox---------"
 
 def test_tah_pocitace_budovat_1():
     akce = tah_pocitace("x-----------x------x", "x")
