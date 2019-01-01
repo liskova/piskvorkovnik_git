@@ -35,7 +35,7 @@ def tah_pocitace(pole, symbol_pocitace):
         cislo_policka = pole.index(str(2*symbol_hrace) + "-") +2
 
     #bránit - prasit 1 (PREKLEP -tohle se musí opravit, takhle to nemůže nic dělat)
-    elif (("-" + str(symbol_hrace) + "-") in pole) and (("-" + str(symbol_hrace) + "-") not in pole):
+    elif (("-" + str(symbol_hrace) + "-") in pole) and (("-" + str(symbol_pocitace) + "-") not in pole):
         cislo_policka = pole.index("-" + str(symbol_hrace) + "-")+2
 
 # budovat 1
